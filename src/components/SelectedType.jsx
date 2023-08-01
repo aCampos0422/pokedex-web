@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import useFetch from "../hooks/useFetch"
 
 
-export default function SelectedType({setSelectValue}) {
+export default function SelectedType({setSelectValue, setInputValue, selectValue}) {
 
   const url = 'https://pokeapi.co/api/v2/type'
 
@@ -14,10 +14,12 @@ export default function SelectedType({setSelectValue}) {
 
   const handleChange = e => {
     setSelectValue(e.target.value)
+    setInputValue('')
+
   }
 
   return (
-   <select onChange={handleChange}>
+   <select value={selectValue} onChange={handleChange}>
     <option value="allPokemons">All Pokemons</option> 
     {
       pokeType?.results.map(type => (

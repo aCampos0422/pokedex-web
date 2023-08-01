@@ -29,7 +29,7 @@ export default function PokedexPage() {
   const handleSubmit = e => {
     e.preventDefault()
     setInputValue(inputSearch.current.value.trim().toLowerCase())
-
+    setSelectValue('allPokemons')
   }
 
   const cbFilter = (poke) => poke.name.includes(inputValue)  
@@ -44,7 +44,8 @@ export default function PokedexPage() {
       </form>  
       <SelectedType
         setSelectValue={setSelectValue}
-        
+        setInputValue={setInputValue}
+        selectValue={selectValue}
       />
         {
           pokemons?.results.filter(cbFilter).map(poke => (
