@@ -1,0 +1,83 @@
+.pokecard{
+    width: 100%;
+    max-width: 350px;
+    border-radius: 0.7em;
+    border: 0.7em solid #ccc;
+    cursor: pointer;
+    transition: transform 150ms ease;
+}
+
+.pokecard:hover{
+    transform: scale(1.03);
+}
+
+.pokecard_header{
+    background-color: #999;
+    aspect-ratio: 2;
+    position: relative;
+}
+
+.pokecard_image{
+    position: absolute;
+    width: 60%;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 1.5em;
+}
+
+.pokecar_body{
+    padding: 3.5em 1em 2em;
+}
+
+.pokecar_name{
+    text-align: center;
+    text-transform: capitalize;
+    font-size: 1.6rem;
+    margin-bottom: 0.2em;
+}
+
+.pokecar_types{
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    margin-bottom: 1em;
+}
+.pokecard_typename:nth-child(2)::before{
+    content: '/';
+    padding-right: 0.7em;
+}
+
+.pokecar_hr{
+    margin-bottom: 1rem;
+    border: 1px solid #ccc4;
+}
+
+.pokecard_stats{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    gap: 1em 0.5em;
+}
+
+.pokecar_stat{
+    display: grid;
+    gap: 0.5em;
+    justify-items: center;
+}
+
+.pokecar_stat_name{
+    font-size: 0.7rem;
+    text-transform: uppercase ;
+    font-weight: 300;
+}
+
+.pokecar_stat_value{
+    font-size: 1rem;
+}
+
+.fire-gradient{
+    background: linear-gradient(176.37deg, #f96d6f -32.26%, #e35825 22.55%, #ebae1b 125.72%) ;
+}
+.water-gradient{
+    background: linear-gradient();
+}
