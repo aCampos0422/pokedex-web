@@ -1,0 +1,5 @@
+.selected{
+    height: 30px;
+    cursor: pointer;
+    border-color: rgba(121, 121, 121, 0.267);
+}

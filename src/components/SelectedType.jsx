@@ -1,5 +1,6 @@
 import { useEffect } from "react"
 import useFetch from "../hooks/useFetch"
+import './styles/SelectedType.css'
 
 
 export default function SelectedType({setSelectValue, setInputValue, selectValue}) {
@@ -19,7 +20,7 @@ export default function SelectedType({setSelectValue, setInputValue, selectValue
   }
 
   return (
-   <select value={selectValue} onChange={handleChange}>
+   <select className="selected" value={selectValue} onChange={handleChange}>
     <option value="allPokemons">All Pokemons</option> 
     {
       pokeType?.results.map(type => (

@@ -5,6 +5,8 @@ import PokedexPage from './pages/PokedexPage'
 import PokeIdPage from './pages/PokeIdPage'
 import Page404 from './pages/Page404'
 import ProtectedRoutes from './pages/ProtectedRoutes'
+import Header from "./components/shared/Header"
+
 
 
 function App() {
@@ -13,6 +15,7 @@ function App() {
 
   return (
     <div>
+      <Header/>
       <Routes>
         <Route path='/' element={<HomePage/>} />
 

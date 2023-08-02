@@ -3,6 +3,8 @@ import useFetch from "../hooks/useFetch"
 import { useEffect, useRef, useState } from "react"
 import PokeCard from "../components/PokeCard"
 import SelectedType from "../components/SelectedType"
+import './styles/PokedexPage.css'
+
 
 
 export default function PokedexPage() {
@@ -35,18 +37,28 @@ export default function PokedexPage() {
   const cbFilter = (poke) => poke.name.includes(inputValue)  
 
   return (
-    <div>
-      <p><span>Welcome {trainer}</span>, here you can find your favorite pokemon</p>
-      <div>
-      <form onSubmit={handleSubmit}>
-        <input ref={inputSearch} type="text" />
-        <button>Search</button>
-      </form>  
-      <SelectedType
-        setSelectValue={setSelectValue}
-        setInputValue={setInputValue}
-        selectValue={selectValue}
-      />
+    <article className="pokedex_globalContainer">
+      <div className="pokedex_in">
+        <h2 className="pokedex_text">Welcome <span className="pokedex_trainerName">{trainer}</span>, here you can find your favorite pokemon</h2>
+        <section className="pokedex_searchAll">
+          <div className="pokedex_submit">
+            <form onSubmit={handleSubmit}>
+              <input className="pokedex_input" ref={inputSearch} type="text" placeholder="Search pokemon" />
+              <button className="pokedex_btn">Search</button>
+            </form>
+          </div>
+          <div className="pokedex_select">
+            <SelectedType
+                setSelectValue={setSelectValue}
+                setInputValue={setInputValue}
+                selectValue={selectValue}
+            />
+          </div>
+        </section> 
+
+      </div>
+
+      <div className="pokedexCards_container">
         {
           pokemons?.results.filter(cbFilter).map(poke => (
             <PokeCard
@@ -56,6 +68,6 @@ export default function PokedexPage() {
           ) )
         }
       </div>
-    </div>
+    </article>
   )
 }

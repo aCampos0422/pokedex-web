@@ -4,6 +4,7 @@
 
 body{
     margin: 0;
+    font-family: 'Roboto', sans-serif;;
 }
 
 h1, h2, h3, h4, p, ul, hr{
@@ -33,3 +34,4 @@ button{
     cursor: pointer;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
