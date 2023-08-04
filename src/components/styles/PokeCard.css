@@ -77,6 +77,7 @@
 
 .pokecar_stat_value{
     font-size: 1rem;
+   
 }
 
 .fire-gradient{
@@ -85,7 +86,7 @@
 .fire-border{
     border-color: #e78535 ;
     text-align: center;
-}
+} 
 .fire-text{
     color: #e78535 ;
 }

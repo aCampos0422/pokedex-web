@@ -52,6 +52,7 @@ export default function PokedexPage() {
                 setSelectValue={setSelectValue}
                 setInputValue={setInputValue}
                 selectValue={selectValue}
+               
             />
           </div>
         </section> 

@@ -1,11 +1,17 @@
 import './style/Header.css'
-import hBack from './style/hBack.png'
+
 
 export default function Header() {
 
   return (
     <header className="header_s">
-        <img src={hBack} alt="" /> 
+      <div className='red'>
+        <img className='header_imagelogo' src="/Pokelogo.png" alt="" />
+      </div>
+      <div className='black'>
+        <img className='header_imageball' src='/pokebola.png' alt="" />
+      </div>
+      <div className='white'></div>    
     </header>
   )
 }

@@ -16,7 +16,6 @@ export default function SelectedType({setSelectValue, setInputValue, selectValue
   const handleChange = e => {
     setSelectValue(e.target.value)
     setInputValue('')
-
   }
 
   return (
