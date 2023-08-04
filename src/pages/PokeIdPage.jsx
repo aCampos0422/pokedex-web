@@ -22,8 +22,10 @@ export default function PokeIdPage() {
     <article className="pokeId_container">
       <div className="pokeId_background">
         <section className="pokeId_info">
-          <img className="pokeId_image" src={pokemon?.sprites.other['official-artwork'].front_default} alt="" />
-          <hr />
+          <div className={`pokeId_imageBack ${pokemon?.types[0].type.name}-gradient`}>
+            <img className="pokeId_image" src={pokemon?.sprites.other['official-artwork'].front_default} alt="" />
+          </div>
+        
           <div className="pokeId_name">
             <h1>#{pokemon?.id}</h1>
             <h2>{pokemon?.name}</h2>
@@ -66,15 +68,19 @@ export default function PokeIdPage() {
 
         <section className="pokeId_stats">
           <div>
-            <h3>Stats</h3>
+            <h3 className="pokeId_movementsTitle">Stats</h3>
             <ul>
               {
                 pokemon?.stats.map(infoStat => (
                   <li className="pokeId_statsList" key={infoStat.stat.url}>
                     <h3>{infoStat.stat.name}:</h3>
                     <span>{infoStat.base_stat} / {base} </span> 
-                    <div className="pokeId_grafStat"></div>
-                    
+                    <div className="pokeId_grafStat">
+                      <div style={{
+                        width:`${100/(base/infoStat.base_stat)}%`
+                      }} className="pokeId_graf2">
+                      </div>
+                    </div>   
                   </li>
                 ))
               }
@@ -82,13 +88,13 @@ export default function PokeIdPage() {
           </div>      
         </section>
 
-        <section>
-          <h3>Movements</h3>
-          <ul>
+        <section className="pokeId_movesments">
+          <h3 className="pokeId_movementsTitle">Movements</h3>
+          <ul className="pokeId_movementsContain">
             {
               pokemon?.moves.map(movePoke => (
                 <li key={movePoke.move.url}>
-                  <h4>{movePoke.move.name}</h4>
+                  <h4 className="pokeId_movesName">{movePoke.move.name}</h4>
                 </li>
               ))
             }

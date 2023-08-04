@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react"
 import PokeCard from "../components/PokeCard"
 import SelectedType from "../components/SelectedType"
 import './styles/PokedexPage.css'
+import Pagination from "../components/Pagination"
 
 
 
@@ -12,9 +13,12 @@ export default function PokedexPage() {
   const [inputValue, setInputValue]  = useState('')
   const [selectValue, setSelectValue] = useState('allPokemons')
 
+  // ESTADO PARA RENDERIZAR LA CANTIDAD DE POKEMONES POR PAGINA
+  const [pokesPerPage, setPokesPerPage] = useState(8)
+
   const trainer = useSelector(reducer => reducer.trainer)
 
-  const url = 'https://pokeapi.co/api/v2/pokemon?offset=0&limit=100'
+  const url = 'https://pokeapi.co/api/v2/pokemon?offset=0&limit=200'
 
   const [ pokemons, getAllPokemons, getPokemonsByType ] = useFetch(url)
 
@@ -69,6 +73,7 @@ export default function PokedexPage() {
           ) )
         }
       </div>
+      <Pagination/>
     </article>
   )
 }

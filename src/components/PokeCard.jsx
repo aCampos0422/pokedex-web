@@ -16,10 +16,12 @@ function PokeCard({url}) {
  const handleClick = () => {
   navigate(`/pokedex/${pokemon.id}`)
  }
+
+
   return (
     <article className={`pokecard ${pokemon?.types[0].type.name}-border`} onClick={handleClick}>
       <header className={`pokecard_header ${pokemon?.types[0].type.name}-gradient`}>
-        <img className="pokecard_image" src={pokemon?.sprites.other['official-artwork'].front_default} alt="" />
+        <img className="pokecard_image" src={pokemon?.sprites.other['official-artwork'].front_default === null ? "/pokebola.png" : pokemon?.sprites.other['official-artwork'].front_default} alt="" />
       </header>
       <section className="pokecard_body">
         <h3 className={`pokecard_name ${pokemon?.types[0].type.name}-text`}>{pokemon?.name}</h3>
