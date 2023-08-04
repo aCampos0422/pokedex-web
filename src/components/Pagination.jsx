@@ -1,20 +1,44 @@
+import { useState, useEffect } from "react";
 
 
 const Pagination = ({pokesPerPage, currentPage, setCurrentPage, pokemons}) => {
 
+  const [visiblePageNumbers, setVisiblePageNumbers] = useState([])
+  
+  const totalCard = pokemons?.results.length
   const pageNumbers = []
-
-
-  for (let i = 1; i <= Math.ceil(1081 / pokesPerPage); i++) {
+  
+  for (let i = 1; i <= Math.ceil(totalCard / pokesPerPage); i++) {
     pageNumbers.push(i)
   }
+  
+  useEffect(() => {
+    setVisiblePageNumbers(pageNumbers.slice(0, 10));
+  }, [totalCard, pokesPerPage]);
+  
 
   const onPreviusPage = () => {
-    setCurrentPage(currentPage - 1)
+    const previousPage = currentPage - 1;
+
+    if (currentPage > 1) {
+      if (!visiblePageNumbers.includes(previousPage) && previousPage > 0) {
+        const startIndex = pageNumbers.indexOf(previousPage);
+        setVisiblePageNumbers(pageNumbers.slice(startIndex, startIndex + 10));
+      }
+      setCurrentPage(previousPage);
+    }
   }
 
   const onNextPage = () => {
-    setCurrentPage(currentPage + 1)
+    const nextPage = currentPage + 1;
+
+      if (currentPage < pageNumbers.length) {
+        if (!visiblePageNumbers.includes(nextPage) && nextPage <= pageNumbers.length) {
+          const startIndex = pageNumbers.indexOf(nextPage) - 9;
+          setVisiblePageNumbers(pageNumbers.slice(startIndex, startIndex + 10));
+        }
+        setCurrentPage(nextPage);
+      }
   }
 
   const onSpecificPage = (n) => {
@@ -31,7 +55,7 @@ const Pagination = ({pokesPerPage, currentPage, setCurrentPage, pokemons}) => {
       <button className={`pagination-next ${currentPage >= pageNumbers.length ? 'is-disabled' : ''}`} onClick={onNextPage}>Next page</button>
       <ul className="pagination-list">
         {
-          pageNumbers?.map(noPage =>(
+          visiblePageNumbers?.map(noPage =>(
             <li key={noPage}>
               <a 
                 className={`pagination-link ${noPage === currentPage ? 'is-current' : ''}`}
@@ -42,7 +66,7 @@ const Pagination = ({pokesPerPage, currentPage, setCurrentPage, pokemons}) => {
             </li>
           ))
         }  
-        <li><span class="pagination-ellipsis">&hellip;</span></li>
+        <li><span className="pagination-ellipsis">&hellip;</span></li>
       </ul>
     </nav>
   )
@@ -52,16 +76,3 @@ export default Pagination;
 
 
 
-{/* <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-  <a class="pagination-previous">Previous</a>
-  <a class="pagination-next">Next page</a>
-  <ul class="pagination-list">
-    <li><a class="pagination-link" aria-label="Goto page 1">1</a></li>
-    <li><span class="pagination-ellipsis">&hellip;</span></li>
-    <li><a class="pagination-link" aria-label="Goto page 45">45</a></li>
-    <li><a class="pagination-link is-current" aria-label="Page 46" aria-current="page">46</a></li>
-    <li><a class="pagination-link" aria-label="Goto page 47">47</a></li>
-    <li><span class="pagination-ellipsis">&hellip;</span></li>
-    <li><a class="pagination-link" aria-label="Goto page 86">86</a></li>
-  </ul>
-</nav> */}
